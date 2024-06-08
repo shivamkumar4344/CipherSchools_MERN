@@ -1,0 +1,55 @@
+/* 1.Simple Selector */
+.center-para,
+h1,
+h2{
+    text-align: center;
+    color: brown;
+}
+
+/* 2.Combinator Selector 
+ 2.1 Descendant selector */
+
+div p{
+    background-color: pink;
+}
+
+
+/*
+2.2 Child Selector*/
+
+/* div > p  */
+
+/*
+2.3 Adjacent Sibling Selector*/
+
+div + p{
+    background-color: cyan;
+}
+
+/*
+2.4 General Sibling Selector */
+
+/* div ~p{
+    background-attachment: cyan;
+} */
+
+
+/* 3.Pseudo-class Selector  */
+
+div ~p:hover{
+    background-color: skyblue;
+
+}
+/* 4. Pseudo-element Selector  */
+div >p::first-letter{
+    color: blue;
+}
+
+
+/* 5. Attribute Selector  */
+
+a[target]
+{
+    background-color: cyan;
+}
+
