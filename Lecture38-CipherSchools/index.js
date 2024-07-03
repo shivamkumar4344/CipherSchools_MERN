@@ -3,7 +3,11 @@ require("./Mongoose");
 const Task = require("./models/Task");
 const app = express();
 
+const userRouter = require("./routes/user-routes");
 const port = 8090;
+
+app.use(express.json());
+app.use("/user",userRouter);
 
 app.get("/",(req ,res)=>{
     res.send("HomePage");

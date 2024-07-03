@@ -1,5 +1,5 @@
 const {connect} = require("mongoose");
-const MONGO_URL ="mongodb+srv://USer:Smaugop4344%24@cluster0.tu2tkia.mongodb.net";
+const MONGO_URL ="mongodb://localhost:27017/Task";
 
 const DB_NAME = `cs-mern`;
 
