@@ -1,6 +1,7 @@
 const { model, Schema } = require("mongoose");
 
 const { isEmail } = require("validator");
+const { encryptPassword } = require("../bcrypt");
 
 const UserSchema = new Schema(
     {
@@ -57,6 +58,16 @@ UserSchema.static.findByEmailAndPasswordForAuth = async (email, password) => {
         throw err;
     }
 };
+
+UserSchema.pre("save",async function(next){
+    const user = this;
+    if(user.modifiedPaths().includes("password"))
+        {
+            user.password = await encryptPassword(user.password);
+        }
+        next();
+
+})
 
 const User = model("User", UserSchema);
 
