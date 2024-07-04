@@ -2,6 +2,7 @@ const { model, Schema } = require("mongoose");
 
 const { isEmail } = require("validator");
 const { encryptPassword } = require("../bcrypt");
+const { generateToken } = require("../jwt");
 
 const UserSchema = new Schema(
     {
@@ -67,7 +68,13 @@ UserSchema.pre("save",async function(next){
         }
         next();
 
-})
+});
+
+UserSchema.methods.generateToken = function(){
+    const user = this;
+    const token = generateToken({_id:user._id});
+    return token;
+}
 
 const User = model("User", UserSchema);
 
