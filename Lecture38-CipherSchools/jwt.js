@@ -3,7 +3,7 @@ const { isValidObjectId } = require("mongoose");
 const CS_SECRET_KEY = "CSSecretKey";
 
 const generateToken = (payload) => {
-    const token = jwt.sign(payload, CS_SECRET_KEY);
+    const token = jwt.sign(payload, CS_SECRET_KEY,{expiresIn:"1h"});
     return token;
 };
 
